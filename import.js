@@ -2,8 +2,8 @@ const fs = require("fs");
 const connection = require('./database')
 
 connection.connect();
-let TABLE_NAME = "table1";
-let FILENAME = "file1.json";
+let TABLE_NAME = "acc";
+let FILENAME = "acc.json";
 
 process.argv.forEach(element => {
   let line = element.split("=");
@@ -27,10 +27,11 @@ connection.query(
 );
 fs.readFile(`./source/${FILENAME}`, "utf8", function(err, data) {
   if (err) throw err;
-
+  // console.log(data +":data");
   const records = JSON.parse(data);
+  console.log(records);
   const columns = Object.keys(records[0]);
-  const schema = columns.join("` TEXT, `");
+  const schema = columns.join("` varchar(200), `");
 
   if(!table_exists) {
     connection.query(

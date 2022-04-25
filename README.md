@@ -17,3 +17,6 @@ const connection = mysql.createConnection({
 ### node import --table=mytablename --filename=file1.json
 
 ##### Note: You should be inside the folder that you cloned.
+
+node import --table=acc --filename=acc.json
+

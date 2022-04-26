@@ -20,3 +20,9 @@ const connection = mysql.createConnection({
 
 node import --table=acc --filename=acc.json
 
+node import --table=accounts --filename=accounts_10.json
+node import --table=accounts1 --filename=accounts_1.json
+
+
+node imp_acct
+node acc

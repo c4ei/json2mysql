@@ -2,8 +2,8 @@ const fs = require("fs");
 const connection = require("./database");
 
 connection.connect();
-let TABLE_NAME = "acc";
-let FILENAME = "acc.json";
+let TABLE_NAME = "accounts1";
+let FILENAME = "accounts_1.json";
 
 process.argv.forEach((element) => {
   let line = element.split("=");
@@ -14,8 +14,8 @@ process.argv.forEach((element) => {
     FILENAME = line[1] ? line[1].trim() : "invalid";
   }
 });
-console.log(TABLE_NAME + ":TABLE_NAME");
-console.log(FILENAME + ":FILENAME");
+// console.log(TABLE_NAME + ":TABLE_NAME");
+// console.log(FILENAME + ":FILENAME");
 let table_exists = false;
 let sql_tblchk = `SELECT count(*) as cnt FROM information_schema.TABLES WHERE TABLE_NAME = '${TABLE_NAME}' AND TABLE_SCHEMA in (SELECT DATABASE());`;
 console.log(sql_tblchk + ":sql_tblchk");
@@ -27,16 +27,16 @@ connection.query(sql_tblchk, (err, data) => {
 });
 fs.readFile(`./source/${FILENAME}`, "utf8", function (err, data) {
   if (err) throw err;
-  // console.log(data +":data");
   const records = JSON.parse(data);
-  // console.log(records);
+  // const records = data;
   // if(records[0] !== "__collections__" && records[0] !== null && records[0] !== undefined)
   // {
-  console.log(records.accounts);
-  // const columns = "`idx` INT(11) NOT NULL AUTO_INCREMENT,";
+  // console.log(records.accounts);
+  const columns = "`idx` INT(11) NOT NULL AUTO_INCREMENT,";
   try {
-    // columns = Object.keys(records[0]);
-    const columns = Object.keys(records.accounts);
+    console.log(records + " : columns [37 line]");
+    columns = Object.keys(records.accounts["c4ei.net@gmail.com"]);   //.()
+    console.log(columns + " : columns [39 line]");
     const schema = columns.join("` varchar(200), `");
 
     if (!table_exists) {

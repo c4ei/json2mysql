@@ -170,6 +170,7 @@ const schema = columns.join("` varchar(200), `");
 console.log( "CREATE TABLE " + TABLE_NAME + " (" + apppen_columns +"`"+ schema + "` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP);" );
 
 
+
 /*
 CREATE TABLE account (`idx` INT(11) NOT NULL AUTO_INCREMENT,`type` varchar(200), `recipientPhoneNumber` varchar(200), 
 `recipient` varchar(200), `createdAt` varchar(200), `country` varchar(200), `credit` varchar(200), `street` varchar(200), 
